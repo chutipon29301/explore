@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         
 
 //        let temp = Info(initStock: Int(initStock.text!)!,holdCost: Int(holdStock.text!)!,month: Int(month.text!)!,prodCost: prod,demand: dem,stock: st)
+        
         performSegue(withIdentifier: "showResult", sender: nil)
         
     }

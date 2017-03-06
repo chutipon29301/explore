@@ -25,7 +25,7 @@ class ResultViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 class DisplayViewController: UITableViewController {
     var data: [[(name: String, value: String)]]!
-    var rearrangeData: [(name: String, value: String)] = []
+    var rearrangeData: [(name: String, value: String, isCollapse: Bool)] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         data = [
@@ -34,12 +34,12 @@ class DisplayViewController: UITableViewController {
             [(name: "Title", value: "Month 3"), (name: "Cost A", value: "100"),(name: "Cost A", value: "200"),(name: "Cost C", value: "300"), (name: "Cost D", value: "400")]
         ]
         getRearrangeData()
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if rearrangeData[indexPath.row].name == "Title" {
-            return tableView.dequeueReusableCell(withIdentifier: "monthCell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "monthCell")!
+            return cell
         }else{
             return tableView.dequeueReusableCell(withIdentifier: "detailCell")!
         }
@@ -49,10 +49,32 @@ class DisplayViewController: UITableViewController {
         return rearrangeData.count
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (rearrangeData[indexPath.row].isCollapse) ? 0.0 : 44.0
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if rearrangeData[indexPath.row].name == "Title" {
+            print(indexPath.row)
+            let start = indexPath.row
+            var end = start
+            while (end + 1 < rearrangeData.count) && rearrangeData[end + 1].name != "Title" {
+                print(end)
+                end += 1
+                rearrangeData[end].isCollapse = !(rearrangeData[end].isCollapse)
+            }
+            tableView.beginUpdates()
+            for _ in start ... end {
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+            tableView.endUpdates()
+        }
+    }
+    
     func getRearrangeData() {
         for x in data {
             for y in x {
-                rearrangeData.append(y)
+                rearrangeData.append((name: y.name,value: y.value, isCollapse: false))
             }
         }
     }
