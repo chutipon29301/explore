@@ -37,9 +37,9 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnPressed(_ sender: UIButton) {
-        let prod = prodCost.text!.components(separatedBy: ",").map{Int($0)!}
-        let dem = demand.text!.components(separatedBy: ",").map{Int($0)!}
-        let st = stock.text!.components(separatedBy: ",").map{Int($0)!}
+//        let prod = prodCost.text!.components(separatedBy: ",").map{Int($0)!}
+//        let dem = demand.text!.components(separatedBy: ",").map{Int($0)!}
+//        let st = stock.text!.components(separatedBy: ",").map{Int($0)!}
         
 
 //        let temp = Info(initStock: Int(initStock.text!)!,holdCost: Int(holdStock.text!)!,month: Int(month.text!)!,prodCost: prod,demand: dem,stock: st)

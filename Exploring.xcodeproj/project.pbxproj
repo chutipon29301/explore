@@ -199,7 +199,7 @@
 				TargetAttributes = {
 					4E603A4F1E6D0F33004864CA = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = TTBVAW2S4M;
+						DevelopmentTeam = H5J9UB8D3F;
 						ProvisioningStyle = Automatic;
 					};
 					4E603A631E6D0F33004864CA = {
@@ -421,11 +421,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TTBVAW2S4M;
+				DEVELOPMENT_TEAM = H5J9UB8D3F;
 				INFOPLIST_FILE = Exploring/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Chutipon.Exploring;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Chutipon.ExploringEngineering;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -435,11 +435,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = TTBVAW2S4M;
+				DEVELOPMENT_TEAM = H5J9UB8D3F;
 				INFOPLIST_FILE = Exploring/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Chutipon.Exploring;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Chutipon.ExploringEngineering;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
