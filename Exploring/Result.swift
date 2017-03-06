@@ -38,10 +38,15 @@ class DisplayViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if rearrangeData[indexPath.row].name == "Title" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "monthCell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "monthCell")! as! MonthCell
+            cell.labelName.text = rearrangeData[indexPath.row].name
+            cell.dropDownImage.image = (rearrangeData[indexPath.row].isCollapse) ? #imageLiteral(resourceName: "ic_arrow_drop_down_black_24dp") : #imageLiteral(resourceName: "ic_arrow_drop_up_black_24dp")
             return cell
         }else{
-            return tableView.dequeueReusableCell(withIdentifier: "detailCell")!
+            let cell = tableView.dequeueReusableCell(withIdentifier: "detailCell")! as! DetailCell
+            cell.labelName.text = rearrangeData[indexPath.row].name
+            cell.value.text = rearrangeData[indexPath.row].value
+            return cell
         }
     }
     
@@ -50,16 +55,15 @@ class DisplayViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (rearrangeData[indexPath.row].isCollapse) ? 0.0 : 44.0
+        return (rearrangeData[indexPath.row].isCollapse && rearrangeData[indexPath.row].name != "Title") ? 0.0 : 44.0
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if rearrangeData[indexPath.row].name == "Title" {
-            print(indexPath.row)
             let start = indexPath.row
+            rearrangeData[indexPath.row].isCollapse = !(rearrangeData[indexPath.row].isCollapse)
             var end = start
             while (end + 1 < rearrangeData.count) && rearrangeData[end + 1].name != "Title" {
-                print(end)
                 end += 1
                 rearrangeData[end].isCollapse = !(rearrangeData[end].isCollapse)
             }
@@ -74,8 +78,18 @@ class DisplayViewController: UITableViewController {
     func getRearrangeData() {
         for x in data {
             for y in x {
-                rearrangeData.append((name: y.name,value: y.value, isCollapse: false))
+                rearrangeData.append((name: y.name,value: y.value, isCollapse: true))
             }
         }
     }
+}
+
+class MonthCell: UITableViewCell {
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var dropDownImage: UIImageView!
+}
+
+class DetailCell: UITableViewCell {
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var value: UILabel!
 }
